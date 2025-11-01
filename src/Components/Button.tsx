@@ -4,14 +4,15 @@ type ButtonProps = {
     type: 'button' | 'submit' | 'reset';
     onClick?: ReactEventHandler<HTMLButtonElement>;
     label: string | ReactNode;
-    isDisabled: boolean;
+    isDisabled?: boolean;
+    className?: string;
 }
-export function Button({ type, onClick, label, isDisabled }: ButtonProps) {
+export function Button({ type, onClick, label, isDisabled, className }: ButtonProps) {
     return (
         <button
             type={type}
             onClick={onClick}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg transition"
+            className={className}
             disabled={isDisabled}
         >
             {label}

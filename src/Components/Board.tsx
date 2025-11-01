@@ -23,8 +23,8 @@ export function Board() {
     }
 
     return (
-        <div className="p-8">
-            <div className="grid grid-cols-1  md:grid-cols-3 gap-6 mb-8">
+        <div className="p-8 bg-grey">
+            <div className="grid grid-cols-1 md:grid-cols-3">
                 {COLUMNS.map((columnName, columnIndex) => <Column onMove={handleOnMove} key={columnName} columnName={columnName} tasks={getTasks(columnIndex)} columnIndex={columnIndex} />)}
             </div>
             <div>
