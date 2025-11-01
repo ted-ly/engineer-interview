@@ -16,7 +16,7 @@ export function Input({ onBlur }: InputProps) {
             onChange={(e) => setValue(e.target.value)}
             onBlur={handleOnBlur}
             placeholder="Enter task title..."
-            className="flex-1 px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
+            className="px-4 py-2 border-2 border-slate-300 rounded-lg focus:border-blue-500 focus:outline-none"
         />
     )
 }

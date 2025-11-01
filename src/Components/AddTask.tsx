@@ -12,7 +12,7 @@ export function AddTask({ onSubmit }: AddTaskProps) {
         onSubmit?.(task);
     };
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="flex gap-3">
             <Input onBlur={value => setTask(value)} />
             <Button type="submit" label={'+'} />
         </form>
