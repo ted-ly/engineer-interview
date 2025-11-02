@@ -19,16 +19,24 @@ export function Board() {
     }
     
     const handleOnMove = (taskId: number, columnDirection: number) => {
-
+        setTasks(prevTasks => prevTasks.map(task => task.id === taskId ? {...task, column: task.column + columnDirection} : task));
     }
+
+    const submit = (task: string) => {
+        setTasks(prevTasks => [...prevTasks, {
+            id: prevTasks.length + 1,
+            title: task,
+            column: 0,
+        }]);
+    };
 
     return (
         <div className="p-8 bg-grey">
             <div className="grid grid-cols-1 md:grid-cols-3">
                 {COLUMNS.map((columnName, columnIndex) => <Column onMove={handleOnMove} key={columnName} columnName={columnName} tasks={getTasks(columnIndex)} columnIndex={columnIndex} />)}
             </div>
-            <div>
-                <AddTask />
+            <div className="my-6">
+                <AddTask onSubmit={submit} />
             </div>
         </div>
         

@@ -1,17 +1,24 @@
-import { ReactEventHandler, useState } from "react"
+import { useEffect, useState } from "react"
 
 type InputProps = {
-    onBlur: (value: string) => void; 
+    onBlur: (value: string) => void;
+    type: string;
+    defaultValue: string
 };
 
-export function Input({ onBlur }: InputProps) {
-    const [value, setValue] = useState('');
+export function Input({ onBlur, type, defaultValue = '' }: InputProps) {
+    const [value, setValue] = useState(defaultValue);
     const handleOnBlur = () => {
         onBlur?.(value);
-    }
+    };
+
+    useEffect(() => {
+        setValue(defaultValue);
+    }, [defaultValue]);
+
     return (
         <input
-            type="text"
+            type={type}
             value={value}
             onChange={(e) => setValue(e.target.value)}
             onBlur={handleOnBlur}

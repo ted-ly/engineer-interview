@@ -8,12 +8,16 @@ type AddTaskProps = {
 
 export function AddTask({ onSubmit }: AddTaskProps) {
     const [task, setTask] = useState('');
-    const handleSubmit = () => {
-        onSubmit?.(task);
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (task.trim()) {
+            onSubmit?.(task.trim());
+            setTask('')
+        }
     };
     return (
         <form onSubmit={handleSubmit} className="flex gap-3">
-            <Input onBlur={value => setTask(value)} />
+            <Input defaultValue={task} type='text' onBlur={value => setTask(value)} />
             <Button type="submit" label={'+'} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded-lg transition" />
         </form>
     )
